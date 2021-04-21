@@ -24,19 +24,52 @@ class User(AbstractUser):
         max_length=255,
     )
     age = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
     )
     rank = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
     )
     birthday = models.DateField(
         null=True,
         blank=True,
     )
+    location = models.ForeignKey(
+        "users.Location",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_location",
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
+
+
+class Location(models.Model):
+    "Generated Model"
+    address1 = models.CharField(
+        max_length=256,
+    )
+    address2 = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
+    )
+    state = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
+    )
+    city = models.CharField(
+        max_length=5,
+        null=True,
+        blank=True,
+    )
+    zip = models.IntegerField(
+        null=True,
+        blank=True,
+    )
