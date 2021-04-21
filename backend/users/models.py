@@ -39,9 +39,9 @@ class User(AbstractUser):
     )
     location = models.ForeignKey(
         "users.Location",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="user_location",
     )
 
@@ -55,19 +55,19 @@ class Location(models.Model):
         max_length=256,
     )
     address2 = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
     )
     state = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
     )
     city = models.CharField(
-        max_length=5,
         null=True,
         blank=True,
+        max_length=5,
     )
     zip = models.IntegerField(
         null=True,
