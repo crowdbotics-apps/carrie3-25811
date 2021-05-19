@@ -45,3 +45,21 @@ class HomePage(models.Model):
     @property
     def field(self):
         return "body"
+
+
+class Event(models.Model):
+    "Generated Model"
+    name = models.CharField(
+        max_length=256,
+    )
+    date = models.DateField()
+    description = models.CharField(
+        max_length=256,
+    )
+    location = models.ForeignKey(
+        "users.Location",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="event_location",
+    )
